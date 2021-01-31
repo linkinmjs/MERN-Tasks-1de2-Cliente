@@ -1,15 +1,41 @@
-import React from 'react';
-
-const onChange = () => {
-    
-}
+import React, {useState} from 'react';
+import { Link } from 'react-router-dom'
 
 const Login = () => {
+
+    // State para iniciar Sesión
+    const [usuario, guardarUsuario] = useState({
+        email: '',
+        password: ''
+    });
+    
+    // Extraer de usuario
+    const {email, password} = usuario
+
+    const onChange = e => {
+        guardarUsuario({
+            ...usuario,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    // Cuando el usuario quiere iniciar Sesión
+    const onSubmit = e => {
+        e.preventDefault();
+
+        // Validar que no haya campos vacios
+
+        // Pasarlo al Action
+
+    }
+
     return ( 
         <div className="form-usuario">
             <div className="contenedor-form sombra-dark">
                 <h1>Iniciar Sesión</h1>
-                <form>
+                <form
+                    onSubmit="onSubmit"
+                >
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input
@@ -17,6 +43,7 @@ const Login = () => {
                             id="email"
                             name="email"
                             placeholder="Tu Email"
+                            value={email}
                             onChange={onChange}
                         />
                     </div>
@@ -27,6 +54,7 @@ const Login = () => {
                             id="password"
                             name="password"
                             placeholder="Tu Password"
+                            value={password}
                             onChange={onChange}
                         />
                     </div>
@@ -34,6 +62,10 @@ const Login = () => {
                         <input type="submit" className="btn btn-primario btn-block" value="Iniciar Sesión"/>
                     </div>
                 </form>
+
+                <Link to={'nueva-cuenta'} className="enlace-cuenta">
+                    Obtener cuenta
+                </Link>
             </div>
         </div>
      );
