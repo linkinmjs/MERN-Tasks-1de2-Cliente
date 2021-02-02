@@ -38,7 +38,7 @@ const NuevoProyecto = () => {
 
             <form 
                 className="formulario-nuevo-proyecto"
-                onSubmit={onSubmit-Proyecto}
+                onSubmit={onSubmitProyecto}
             >
                 <input
                     type="text"
