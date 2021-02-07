@@ -6,7 +6,7 @@ const ListadoTareas = () => {
 
     // Obtener el state del Proyectos
     const proyectosContext = useContext(proyectoContext);
-    const { proyecto } = proyectosContext;
+    const { proyecto, eliminarProyecto } = proyectosContext;
 
     // Si no hay proyecto seleccionado
     if(!proyecto){
@@ -23,7 +23,10 @@ const ListadoTareas = () => {
         { nombre: 'Elegir Hosting', estado: true },
     ]
 
-    
+    // Eliminar un proyecto
+    const onClickEliminar = () => {
+        eliminarProyecto(proyectoActual.id);
+    } 
 
     return ( 
         <Fragment>
@@ -43,6 +46,7 @@ const ListadoTareas = () => {
             <button 
                 type="button"
                 className="btn btn-elimnar"
+                onClick={onClickEliminar}
             >Eliminar Proyecto &times;</button>
 
         </Fragment>
