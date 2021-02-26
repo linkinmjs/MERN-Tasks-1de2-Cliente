@@ -36,14 +36,23 @@ const NuevaCuenta = () => {
             password.trim() === '' || 
             confirmar.trim() === ''){
                 mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
+                return;
             }
 
         // Password mínimo de 6 caracteres
+        if( password.length < 6){
+            mostrarAlerta('El password debe ser de al menos 6 caracteres', 'alerta-error');
+            return;
+        }
 
         // Los 2 passwords iguales
+        if (password !== confirmar){
+            mostrarAlerta('Ambas contraseñas deben ser iguales', 'alerta-error');
+            return;
+        }
 
         // Pasarlo al Action
-
+        
     }
 
     return ( 
