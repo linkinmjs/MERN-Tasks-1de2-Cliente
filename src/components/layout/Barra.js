@@ -7,8 +7,9 @@ const Barra = () => {
     const authContext = useContext(AuthContext);
     const { usuario, usuarioAutenticado, cerrarSesion } = authContext;
 
-    useEffect(()=> {
+    useEffect(() => {
         usuarioAutenticado();
+        // eslint-disable-next-line
     }, []);
 
     return ( 

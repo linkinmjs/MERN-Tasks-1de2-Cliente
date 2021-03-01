@@ -7,7 +7,6 @@ import {
     AGREGAR_TAREA,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
-    ESTADO_TAREA,
     TAREA_ACTUAL,
     ACTUALIZAR_TAREA,
     LIMPIAR_TAREA
@@ -29,11 +28,10 @@ const TareaState = props => {
 
     // Obtener las tareas de un proyecto
     const obtenerTareas = async proyecto => {
-        console.log(proyecto);
 
         try {
             const resultado = await clienteAxios.get('/api/tareas', { params: { proyecto }});
-            console.log(resultado);
+            //console.log(resultado);
             dispatch({
                 type: TAREAS_PROYECTO,
                 payload: resultado.data.tareas
@@ -47,11 +45,11 @@ const TareaState = props => {
     const agregarTarea = async tarea => {
         try {
             const resultado = await clienteAxios.post('/api/tareas', tarea);
-            console.log(resultado);
+            //console.log(resultado);
 
             dispatch({
                 type:AGREGAR_TAREA,
-                payload: tarea
+                payload: resultado.data.tarea
             })            
         } catch (error) {
             console.log(error)
