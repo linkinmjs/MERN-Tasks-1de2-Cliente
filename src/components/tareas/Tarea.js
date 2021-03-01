@@ -11,7 +11,7 @@ const Tarea = ({tarea}) => {
 
     // Obtener funciones del context de tarea
     const tareasContext = useContext(tareaContext);
-    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual } = tareasContext;
+    const { eliminarTarea, obtenerTareas, actualizarTarea, guardarTareaActual } = tareasContext;
     
     // Extraer el proyecto
     const [ proyectoActual ] = proyecto;
@@ -29,7 +29,7 @@ const Tarea = ({tarea}) => {
         }else{
             tarea.estado = true
         }
-        cambiarEstadoTarea(tarea);
+        actualizarTarea(tarea);
     }
 
     // Agrega una tarea actual cuando el usuario desea editarla
@@ -38,44 +38,44 @@ const Tarea = ({tarea}) => {
     }
 
     return (
-            <li className="tarea sombra">
-                <p>{tarea.nombre}</p>
-                <div className="estado">
-                    {tarea.estado
-                    ?
-                        (
-                            <button
-                                type="button"
-                                className="completo"
-                                onClick={() => cambiarEstado(tarea)}
-                            >Completo</button>
-                        )
-                    :
-                        (
-                            <button
-                                type="button"
-                                className="incompleto"
-                                onClick={() => cambiarEstado(tarea)}
-                            >Incompleto</button>
-                        )                    
-                    }
-                </div>
+        <li className="tarea sombra">
+            <p>{tarea.nombre}</p>
+            <div className="estado">
+                {tarea.estado
+                ?
+                    (
+                        <button
+                            type="button"
+                            className="completo"
+                            onClick={() => cambiarEstado(tarea)}
+                        >Completo</button>
+                    )
+                :
+                    (
+                        <button
+                            type="button"
+                            className="incompleto"
+                            onClick={() => cambiarEstado(tarea)}
+                        >Incompleto</button>
+                    )                    
+                }
+            </div>
 
-                <div className="acciones">
-                    <button
-                        type="button"
-                        className="btn btn-primario"
-                        onClick={() => seleccionarTarea(tarea)}
-                    >Editar</button>
+            <div className="acciones">
+                <button
+                    type="button"
+                    className="btn btn-primario"
+                    onClick={() => seleccionarTarea(tarea)}
+                >Editar</button>
 
-                    <button
-                        type="button"
-                        className="btn btn-secundario"
-                        onClick={ () => tareaEliminar(tarea._id)}
-                    >Eliminar</button>
-                </div>
-            </li>
-        );
+                <button
+                    type="button"
+                    className="btn btn-secundario"
+                    onClick={ () => tareaEliminar(tarea._id)}
+                >Eliminar</button>
+            </div>
+        </li>
+    );
 }
  
 export default Tarea;
